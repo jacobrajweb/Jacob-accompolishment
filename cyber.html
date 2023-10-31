@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cyber.css">
+    <link rel="icon" type="image/x-icon" href="logo1.jpg" />
+    <style>
+        
+        .register-button, #eventImage {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: transform 0.2s ease; 
+        }
+
+       
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: -1; 
+            transition: transform 0.2s ease;
+        }
+
+        
+        body {
+            overflow: hidden;
+        }
+
+        
+    </style>
+    <title>Cyber Safety Event</title>
+</head>
+<body>
+    <div class="background-image"></div> 
+    <header>
+        <div class="logo">
+            <a href="lab.html"> <img src="logo.png" alt="Company Logo">
+            </a>
+        </div>
+    </header>
+    <div class="event-details">
+        <img src="event1.jpeg" alt="Cyber Safety" id="eventImage" width="750">
+        <h1>Cyber Safety Event</h1>
+        <p>Date: October 15, 2023</p>
+        <p>Time: 10:00 AM - 4:00 PM</p>
+        <p>Location: Auditorium</p>
+        <h2>About the Event</h2>
+        <p>Join us for a day of insightful discussions and workshops on cyber safety and security. Learn about the latest threats, preventive measures, and best practices from industry experts. Whether you're a student, professional, or simply curious about online safety, this event is for you!</p>
+        <h2>Registration</h2>
+        <p>Registration is free and open to all. Reserve your spot today and ensure your online presence remains secure!</p>
+        <a href="registration.html" class="register-button" id="registerButton">Register Now</a>
+    </div>
+
+    <script>
+        const registerButton = document.getElementById('registerButton');
+        const eventImage = document.getElementById('eventImage');
+        const background = document.querySelector('.background-image');
+
+        function applyHoverEffect() {
+            registerButton.style.transform = 'scale(1.05)';
+            background.style.transform = 'scale(1.05)';
+        }
+
+        
+        function removeHoverEffect() {
+            registerButton.style.transform = 'scale(1)';
+            background.style.transform = 'scale(1)';
+        }
+
+        function applyImageHoverEffect() {
+            eventImage.style.transform = 'scale(1.05)';
+            background.style.transform = 'scale(1.05)';
+        }
+
+        
+        function removeImageHoverEffect() {
+            eventImage.style.transform = 'scale(1)';
+            background.style.transform = 'scale(1)';
+        }
+
+       
+        registerButton.addEventListener('mouseenter', applyHoverEffect);
+        registerButton.addEventListener('mouseleave', removeHoverEffect);
+
+        eventImage.addEventListener('mouseenter', applyImageHoverEffect);
+        eventImage.addEventListener('mouseleave', removeImageHoverEffect);
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('image.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+
+.home-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.home-link:hover {
+    background-color: #000;
+    transform: scale(1.1);
+}

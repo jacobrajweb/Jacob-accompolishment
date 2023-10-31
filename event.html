@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="event.css">
+    <link rel="icon" type="image/x-icon" href="logo1.jpg" />
+    <title>Events</title>
+    <style>
+      
+        .back-to-home-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-home-button:hover {
+            background-color: #444; 
+        }
+        
+       
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <center><h1>All Events</h1></center>
+    <div class="event-list">
+        <div class="event" onmouseover="highlightEvent(this)" onmouseout="unhighlightEvent(this)">
+            <a href="cyber.html">
+                <img src="event1.jpeg" alt="cyber">
+                <h2>Cyber Safety</h2>
+                <p>Let's Protect the Cyber World from New Threats</p>
+            </a>
+        </div>
+        <div class="event" onmouseover="highlightEvent(this)" onmouseout="unhighlightEvent(this)">
+            <a href="ai.html">
+                <img src="ai.jpg" alt="ai">
+                <h2>AI Introduction</h2>
+                <p>To know more about artificial intelligence</p>
+            </a>
+        </div>
+        <div class="event" onmouseover="highlightEvent(this)" onmouseout="unhighlightEvent(this)">
+            <a href="gaming.html">
+                <img src="game.webp" alt="auto">
+                <h2>Gaming</h2>
+                <p>Gaming Competitions</p>
+            </a>
+        </div>
+    </div>
+
+   
+    <button class="back-to-home-button" onclick="goToHome()">Back to Home</button>
+
+    <script>
+        function highlightEvent(event) {
+            event.style.transform = "scale(1.05)";
+            event.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
+        }
+
+        function unhighlightEvent(event) {
+            event.style.transform = "scale(1)";
+            event.style.boxShadow = "none";
+        }
+
+        function goToHome() {
+            window.location.href = "lab.html";
+        }
+    </script>
+</body>
+</html>

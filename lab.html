@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="logo1.jpg" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+    
+        .back-video {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .bottom-left {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <video autoplay loop muted plays-inline class="back-video" width="100" height="600">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+
+        <nav>
+            <img src="logo.png" alt="logo" width="400" height="100" class="logo">
+            <ul>
+                <li id="homeLink"><a href="lab.html">Home</a></li>
+                <li id="contactLink"><a href="contact.html">Contact Us</a></li>
+                <li id="eventLink"><a href="event.html">Event</a></li>
+                <li id="registrationLink"><a href="registration.html">Registration</a></li>
+                <li id="calculator"><a href="calculator.html">Calculator</a></li>
+            </ul>
+        </nav>
+        
+    </div>
+
+    
+
+    <script>
+        const navLinks = {
+            home: document.getElementById('homeLink'),
+            contact: document.getElementById('contactLink'),
+            event: document.getElementById('eventLink'),
+            registration: document.getElementById('registrationLink'),
+            calculator: document.getElementById('calculator'), // Calculator link
+            moreButton: document.getElementById('moreButton')
+        };
+    
+        function applyHoverEffect(element) {
+            element.style.transform = 'scale(1.05)';
+        }
+    
+        function removeHoverEffect(element) {
+            element.style.transform = 'scale(1)';
+        }
+    
+        for (const key in navLinks) {
+            if (navLinks.hasOwnProperty(key)) {
+                const element = navLinks[key];
+                element.addEventListener('mouseenter', () => applyHoverEffect(element));
+                element.addEventListener('mouseleave', () => removeHoverEffect(element));
+            }
+        }
+
+        function updateSystemTime() {
+            const systemTimeElement = document.getElementById('system-time');
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            systemTimeElement.textContent = `System Time: ${timeString}`;
+        }
+
+        // Update the system time every second
+        setInterval(updateSystemTime, 1000);
+
+        // Initial update
+        updateSystemTime();
+    </script>
+</body>
+</html>

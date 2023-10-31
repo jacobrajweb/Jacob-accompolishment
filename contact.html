@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="icon" type="image/x-icon" href="logo1.jpg" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('image.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .white-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            margin: 2rem auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            max-width: 600px;
+            overflow: auto;  
+            max-height: 475px; 
+        }
+
+        
+        .social-icon {
+            transition: transform 0.2s ease; 
+        }
+
+        
+    </style>
+    <title>Contact Us</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="lab.html"> <img src="logo.png" alt="Company Logo">
+            </a>
+        </div>
+    </header>
+    
+    <div class="white-section">
+        <center>
+            <h2><b><u>CONTACT US</u></b></h2>
+        </center>
+        <center>
+            <p><b>Phone</b>: 1 800 425 90009<br>
+            <b>Email:</b> btech@amrita.edu<br>     
+            <b>Address:</b> Chennai Campus<br> 
+            337/1A, Vengal Village,<br>
+            Thiruvallur Taluk & District – 601 103.<br>
+            Tamil Nadu, India</p>
+        </center>
+        <br>
+        <center><h1><u>Location</u></h1></center>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3883.4149036390286!2d80.02368187463624!3d13.261992708446066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52814946112d6f%3A0x57a644f6f25f9b0c!2sAmrita%20Vishwa%20Vidyapeetham%20Chennai%20Campus!5e0!3m2!1sen!2sin!4v1693314109836!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <center><h2><b><u>See us on</u></b></h2></center>
+        <center><a href="https://www.amrita.edu/"><img src="amrita.png" alt="facebook" width="100" class="social-icon"></a></center>
+        <center><a href="https://www.facebook.com/chennaicampus/"><img src="fb.png" alt="facebook" width="100" class="social-icon"></a></center>
+        <center><a href="https://www.youtube.com/channel/UCif-ctPLQ0CS0OFZHLYN0ug"><img src="ytlogo.png" alt="youtubelogo" width="100" class="social-icon"></a></center>
+    </div>
+
+    <script>
+        
+        function applyImageHoverEffect(event) {
+            event.target.style.transform = 'scale(1.1)';
+        }
+
+       
+        function removeImageHoverEffect(event) {
+            event.target.style.transform = 'scale(1)';
+        }
+
+        const socialIcons = document.querySelectorAll('.social-icon');
+        socialIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', applyImageHoverEffect);
+            icon.addEventListener('mouseleave', removeImageHoverEffect);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+        <link rel="stylesheet" href="calculator.css">
+    </head>
+    <body style="background: url('back.jpg') no-repeat center center fixed; background-size: cover;">
+
+        <h1 style="text-align: center; font-family: cursive; color: white;">Test our brand new calculator</h1>
+        <div class="calculator">
+            <div class="output">
+                <input type="text" id="result" readonly>
+            </div>
+            <div class="buttons">
+                <button onclick="appendToResult('7')">7</button>
+                <button onclick="appendToResult('8')">8</button>
+                <button onclick="appendToResult('9')">9</button> 
+                <button onclick="appendToResult('-')">-</button>
+                <button onclick="appendToResult('4')">4</button>
+                <button onclick="appendToResult('5')">5</button>
+                <button onclick="appendToResult('6')">6</button>
+                <button onclick="appendToResult('/')">/</button>
+                <button onclick="appendToResult('1')">1</button>
+                <button onclick="appendToResult('2')">2</button>
+                <button onclick="appendToResult('3')">3</button>
+                <button onclick="appendToResult('%')">%</button>
+                <button onclick="clearResult()" style="background-color: red;">C</button>
+                <button onclick="appendToResult('0')">0</button>
+                <button onclick="appendToResult('*')">*</button>
+                <button onclick="appendToResult('+')">+</button>
+                <button onclick="calculateResult()">=</button>
+                <button onclick="appendToResult('.')">.</button>
+                <button onclick="convertCurrency()" style="background-color: rgb(0, 96, 231);">Convert Currency</button>
+                <button onclick="convertTemperature()" style="background-color: rgb(0, 96, 231);">Convert Temperature</button>
+                <button id="backToHomeButton" style="background-color: green;" onclick="location.href='lab.html';">Back to Home</button>
+                <button onclick="convertWeight()" style="background-color: rgb(0, 96, 231);">Convert Weight</button>
+                <button onclick="calculateDiscount()" style="background-color:  rgb(0, 96, 231);">Calculate Discount</button>
+                <button onclick="calculateData()" style="background-color:  rgb(0, 96, 231);">Data Calculation (GB to MB)</button>
+                <button onclick="calculateDistance()" style="background-color:  rgb(0, 96, 231);">Distance Calculator</button>
+                <button onclick="calculateAverage()" style="background-color: rgb(0, 96, 231);">Average Calculator</button>
+                <button onclick="calculateYears()" style="background-color: rgb(0, 96, 231);">Year Calculator</button>
+                <button onclick="hoursTominute()" style="background-color: rgb(0, 96, 231);">Hour to Minutes Calculator</button>
+            </div>
+        </div>
+
+        <script>
+            function appendToResult(value) {
+                document.getElementById('result').value += value;
+            }
+            function clearResult() {
+                document.getElementById('result').value = '';
+            }
+
+            function calculateResult() {
+                try {
+                    const result = eval(document.getElementById('result').value);
+                    document.getElementById('result').value = result;
+                } catch (error) {
+                    document.getElementById('result').value = 'Error';
+                }
+            }
+
+            function convertCurrency() {
+                const fromCurrency = prompt('Enter the source currency (e.g., USD, EUR, INR, AED, JPY, GBP, CAD, AUD, KWD, SAR):').toUpperCase();
+                const toCurrency = prompt('Enter the target currency (e.g., USD, EUR, INR, AED, JPY, GBP, CAD, AUD, KWD, SAR):').toUpperCase();
+                const amount = parseFloat(prompt('Enter the amount to convert:'));
+
+                if (fromCurrency && toCurrency && !isNaN(amount)) {
+                    
+
+                    
+                    const conversionRates = {
+                        USD: {
+                            EUR: 0.85,
+                            INR: 74.81,
+                            AED: 3.67,   
+                            JPY: 110.56, 
+                            GBP: 0.72,   
+                            CAD: 1.26,   
+                            AUD: 1.33,   
+                            KWD: 0.30,   
+                            SAR: 3.75   
+                        },
+                        EUR: {
+                            USD: 1.18,
+                            INR: 88.25,
+                            AED: 4.08,
+                            JPY: 132.45,
+                            GBP: 0.86,
+                            CAD: 1.51,
+                            AUD: 1.59,
+                            KWD: 0.37,
+                            SAR: 4.53
+                        },
+                        INR: {
+                            USD: 0.013,
+                            EUR: 0.011,
+                            AED: 0.055,
+                            JPY: 1.16,
+                            GBP: 0.0094,
+                            CAD: 0.016,
+                            AUD: 0.017,
+                            KWD: 0.004,
+                            SAR: 0.052
+                        },
+                        AED: {
+                            USD: 0.27,
+                            EUR: 0.25,
+                            INR: 18.17,
+                            JPY: 29.99,
+                            GBP: 0.19,
+                            CAD: 0.33,
+                            AUD: 0.35,
+                            KWD: 0.081,
+                            SAR: 1.00
+                        },
+                        JPY: {
+                            USD: 0.0091,
+                            EUR: 0.0075,
+                            INR: 0.86,
+                            AED: 0.033,
+                            GBP: 0.0064,
+                            CAD: 0.011,
+                            AUD: 0.012,
+                            KWD: 0.0027,
+                            SAR: 0.033
+                        },
+                        GBP: {
+                            USD: 1.39,
+                            EUR: 1.17,
+                            INR: 106.73,
+                            AED: 5.27,
+                            JPY: 157.20,
+                            CAD: 1.74,
+                            AUD: 1.83,
+                            KWD: 0.42,
+                            SAR: 5.17
+                        },
+                        CAD: {
+                            USD: 0.79,
+                            EUR: 0.66,
+                            INR: 60.42,
+                            AED: 3.01,
+                            JPY: 87.89,
+                            GBP: 0.57,
+                            AUD: 1.05,
+                            KWD: 0.24,
+                            SAR: 2.98
+                        },
+                        AUD: {
+                            USD: 0.75,
+                            EUR: 0.63,
+                            INR: 58.01,
+                            AED: 2.83,
+                            JPY: 79.82,
+                            GBP: 0.55,
+                            CAD: 0.96,
+                            KWD: 0.22,
+                            SAR: 2.72
+                        },
+                        KWD: {
+                            USD: 3.31,
+                            EUR: 2.82,
+                            INR: 256.63,
+                            AED: 12.38,
+                            JPY: 366.09,
+                            GBP: 2.39,
+                            CAD: 4.34,
+                            AUD: 4.54,
+                            SAR: 12.35
+                        },
+                        SAR: {
+                            USD: 0.27,
+                            EUR: 0.23,
+                            INR: 20.45,
+                            AED: 1.00,
+                            JPY: 30.02,
+                            GBP: 0.19,
+                            CAD: 0.34,
+                            AUD: 0.37,
+                            KWD: 0.081
+                        }
+                    };
+
+                    if (conversionRates[fromCurrency] && conversionRates[fromCurrency][toCurrency]) {
+                        const convertedAmount = amount * conversionRates[fromCurrency][toCurrency];
+                        document.getElementById('result').value = `${amount} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`;
+                    } else {
+                        alert('Unsupported currency or conversion.');
+                    }
+                } else {
+                    alert('Invalid input. Please enter valid values.');
+                }
+            }
+
+            function convertTemperature() {
+                const fromUnit = prompt('Enter the temperature unit to convert from (e.g., C or F):');
+                const toUnit = prompt('Enter the temperature unit to convert to (e.g., C or F):');
+                const temperatureValue = parseFloat(prompt('Enter the temperature value:'));
+
+                if (fromUnit && toUnit && !isNaN(temperatureValue)) {
+                    let convertedTemperature;
+
+                    if (fromUnit.toLowerCase() === 'c' && toUnit.toLowerCase() === 'f') {
+                        convertedTemperature = (temperatureValue * 9/5) + 32; 
+                    } else if (fromUnit.toLowerCase() === 'f' && toUnit.toLowerCase() === 'c') {
+                        convertedTemperature = (temperatureValue - 32) * 5/9; 
+                    } else {
+                        alert('Unsupported temperature units or conversion.');
+                        return;
+                    }
+
+                    document.getElementById('result').value = convertedTemperature.toFixed(2);
+                } else {
+                    alert('Invalid input. Please enter valid values.');
+                }
+            }
+            function convertWeight() {
+                const fromUnit = prompt('Enter the weight unit to convert from (e.g., kg, g, lbs, oz, etc.):');
+                const toUnit = prompt('Enter the weight unit to convert to (e.g., kg, g, lbs, oz, etc.):');
+                const weightValue = parseFloat(prompt('Enter the weight value:'));
+
+                if (fromUnit && toUnit && !isNaN(weightValue)) {
+                    let convertedWeight;
+
+                
+                    switch (fromUnit.toLowerCase()) {
+                        case 'kg':
+                            if (toUnit.toLowerCase() === 'g') {
+                                convertedWeight = weightValue * 1000;
+                            } else if (toUnit.toLowerCase() === 'lbs') {
+                                convertedWeight = weightValue * 2.20462;
+                            }
+                            
+                            break;
+                        case 'g':
+                            if (toUnit.toLowerCase() === 'kg') {
+                                convertedWeight = weightValue / 1000;
+                            }
+                            
+                            break;
+                    
+                        default:
+                            alert('Unsupported weight units or conversion.');
+                            return;
+                    }
+
+                    document.getElementById('result').value = `${weightValue} ${fromUnit} = ${convertedWeight.toFixed(2)} ${toUnit}`;
+                } else {
+                    alert('Invalid input. Please enter valid values.');
+                }
+            }
+            function calculateDiscount() {
+                const originalPrice = parseFloat(prompt('Enter the original price:'));
+                const discountPercentage = parseFloat(prompt('Enter the discount percentage:'));
+                if (!isNaN(originalPrice) && !isNaN(discountPercentage)) {
+                    const discountAmount = (originalPrice * discountPercentage) / 100;
+                    const discountedPrice = originalPrice - discountAmount;
+                    document.getElementById('result').value = `Discounted Price: ${discountedPrice.toFixed(2)}`;
+                } else {
+                    alert('Invalid input. Please enter valid values.');
+                }
+            }
+
+            function calculateData() {
+                const gb = parseFloat(prompt('Enter data in GB:'));
+                if (!isNaN(gb)) {
+                    const mb = gb * 1024;
+                    document.getElementById('result').value = `Data in MB: ${mb} MB`;
+                } else {
+                    alert('Invalid input. Please enter a valid number of GB.');
+                }
+            }
+
+            function calculateDistance() {
+                const distance = parseFloat(prompt('Enter distance in kilometers:'));
+                if (!isNaN(distance)) {
+                    const metre = distance * 1000;
+                    document.getElementById('result').value = `Distance in metre: ${metre} m`;
+                } else {
+                    alert('Invalid input. Please enter a valid distance in kilometers.');
+                }
+            }
+            function calculateAverage() {
+                const numbers = prompt('Enter a list of numbers separated by commas (e.g., 1, 2, 3):');
+                const numberArray = numbers.split(',').map(num => parseFloat(num));
+
+                if (numberArray.every(num => !isNaN(num))) {
+                    const average = numberArray.reduce((a, b) => a + b) / numberArray.length;
+                    document.getElementById('result').value = `Average: ${average.toFixed(2)}`;
+                } else {
+                    alert('Invalid input. Please enter valid numbers separated by commas.');
+                }
+            }
+            function calculateYears() {
+        const fromDate = prompt('Enter the birthdate (dd/mm/yyyy):');
+        const toDate = prompt('Enter the current date (dd/mm/yyyy):');
+
+    
+        const fromParts = fromDate.split('/').reverse();
+        const toParts = toDate.split('/').reverse();
+
+    
+        const fromDateObj = new Date(fromParts.join('-'));
+        const toDateObj = new Date(toParts.join('-'));
+
+
+        if (!isNaN(fromDateObj) && !isNaN(toDateObj)) {
+            const timeDiff = Math.abs(toDateObj - fromDateObj);
+            const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+
+            const years = Math.floor(daysDiff / 365); 
+
+            document.getElementById('result').value = `Age: ${years} years`;
+        } else {
+            alert('Invalid date input. Please enter valid dates in the "dd--mm--yyyy" format.');
+        }
+    }
+    function hoursTominute() {
+        const hours = parseFloat(prompt('Enter the number of hours:'));
+
+        if (!isNaN(hours)) {
+            const minutes = hours * 60; 
+            document.getElementById('result').value = `${hours} hours = ${minutes} minutes`;
+        } else {
+            alert('Invalid input. Please enter a valid number of hours.');
+        }
+    }
+
+        </script>
+    </body>
+    </html>
+
+
+
+
+
